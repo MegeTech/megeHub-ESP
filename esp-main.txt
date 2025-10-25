@@ -1,1 +1,1649 @@
-local a=game:GetService("Players")local b=game:GetService("RunService")local c=game:GetService("TweenService")local d=game:GetService("UserInputService")local e=a.LocalPlayer;local f=e:WaitForChild("PlayerGui")local g="ExecuteESPCommand"local h=true;local i=true;local j=UDim2.new(0,320,0,400)local k=36;local l=Color3.fromRGB(35,37,40)local m=Color3.fromRGB(44,46,51)local n=Color3.fromRGB(54,57,63)local o=Color3.fromRGB(0,162,255)local p=Color3.fromRGB(0,130,200)local q=Color3.fromRGB(240,240,240)local r=Color3.fromRGB(180,180,180)local s=Color3.fromRGB(20,20,20)local t=Color3.fromRGB(80,220,120)local u=Color3.fromRGB(255,80,80)local v=Color3.fromRGB(0,200,200)local w={}local x={}local y=false;local z={}local function A(B)return B and tostring(B)or"":lower()end;local function C(D)local E,F=pcall(function()setclipboard(D)end)return E end;local function G(H,D,I)local J=Instance.new("TextButton")J.Name=H;J.Text=D;J.Parent=I;J.BackgroundColor3=o;J.TextColor3=q;J.Font=Enum.Font.SourceSansBold;J.TextSize=16;J.BorderSizePixel=0;local K=Instance.new("UICorner")K.CornerRadius=UDim.new(0,6)K.Parent=J;J.MouseEnter:Connect(function()c:Create(J,TweenInfo.new(0.15),{BackgroundColor3=p}):Play()end)J.MouseLeave:Connect(function()c:Create(J,TweenInfo.new(0.15),{BackgroundColor3=o}):Play()end)return J end;local function L()local M=Instance.new("ScreenGui")M.Name="ModernESPUI_v2"M.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;M.ResetOnSpawn=false;local N=Instance.new("Frame")N.Name="PasswordOverlay"N.Size=UDim2.new(1,0,1,0)N.Position=UDim2.new(0,0,0,0)N.BackgroundColor3=Color3.fromRGB(0,0,0)N.BackgroundTransparency=0.5;N.ZIndex=10;N.Parent=M;z.PasswordOverlay=N;local O=Instance.new("Frame")O.Name="Modal"O.Size=UDim2.new(0,360,0,220)O.Position=UDim2.new(0.5,-180,0.5,-110)O.BackgroundColor3=l;O.BorderSizePixel=0;O.Parent=N;local P=Instance.new("UICorner")P.CornerRadius=UDim.new(0,8)P.Parent=O;local Q=Instance.new("UIPadding")Q.PaddingLeft=UDim.new(0,16)Q.PaddingRight=UDim.new(0,16)Q.PaddingTop=UDim.new(0,16)Q.PaddingBottom=UDim.new(0,16)Q.Parent=O;local R=Instance.new("TextLabel")R.Name="Title"R.Size=UDim2.new(1,0,0,30)R.BackgroundTransparency=1;R.Text="Panel Authentication"R.Font=Enum.Font.SourceSansBold;R.TextSize=20;R.TextColor3=q;R.TextXAlignment=Enum.TextXAlignment.Left;R.Parent=O;local S=Instance.new("TextBox")S.Name="PassBox"S.Size=UDim2.new(1,0,0,36)S.Position=UDim2.new(0,0,0,50)S.PlaceholderText="Password"S.PlaceholderColor3=r;S.BackgroundColor3=m;S.TextColor3=q;S.ClearTextOnFocus=false;S.Font=Enum.Font.SourceSans;S.TextSize=16;S.Text=""S.Parent=O;z.PassBox=S;local T=Instance.new("UICorner")T.CornerRadius=UDim.new(0,6)T.Parent=S;local U=Instance.new("UIStroke")U.Color=n;U.Thickness=1;U.Parent=S;local V=G("GetKey","GET KEY",O)V.Size=UDim2.new(1,0,0,30)V.Position=UDim2.new(0,0,0,96)V.BackgroundColor3=m;V.TextColor3=r;z.GetKeyButton=V;local W=Instance.new("TextLabel")W.Name="Status"W.Size=UDim2.new(1,0,0,18)W.Position=UDim2.new(0,0,0,132)W.BackgroundTransparency=1;W.Text=""W.Font=Enum.Font.SourceSans;W.TextSize=14;W.TextColor3=r;W.Parent=O;z.ModalStatus=W;local X=G("Unlock","Unlock",O)X.Size=UDim2.new(0.5,-4,0,36)X.Position=UDim2.new(0,0,1,-36)z.PassButton=X;local Y=G("Close","Close UI",O)Y.Name="Close"Y.Size=UDim2.new(0.5,-4,0,36)Y.Position=UDim2.new(0.5,4,1,-36)Y.BackgroundColor3=u;z.PassCancelButton=Y;Y.MouseEnter:Connect(function()c:Create(Y,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(200,70,70)}):Play()end)Y.MouseLeave:Connect(function()c:Create(Y,TweenInfo.new(0.15),{BackgroundColor3=u}):Play()end)local Z=Instance.new("Frame")Z.Name="MainFrame"Z.Size=j;Z.Position=UDim2.new(0,60,0,60)Z.BackgroundColor3=l;Z.BorderSizePixel=0;Z.AnchorPoint=Vector2.new(0,0)Z.Active=true;Z.ClipsDescendants=true;Z.Visible=false;Z.ZIndex=5;Z.Parent=M;z.MainFrame=Z;local _=Instance.new("UICorner")_.CornerRadius=UDim.new(0,8)_.Parent=Z;local a0=Instance.new("Frame")a0.Name="MainContent"a0.Size=UDim2.new(1,0,1,-k)a0.Position=UDim2.new(0,0,0,k)a0.BackgroundTransparency=1;a0.Parent=Z;z.MainContent=a0;local a1=Instance.new("UIPadding")a1.PaddingLeft=UDim.new(0,12)a1.PaddingRight=UDim.new(0,12)a1.PaddingTop=UDim.new(0,12)a1.PaddingBottom=UDim.new(0,12)a1.Parent=a0;local a2=Instance.new("Frame")a2.Name="Header"a2.Size=UDim2.new(1,0,0,k)a2.BackgroundColor3=m;a2.BorderSizePixel=0;a2.Parent=Z;z.Header=a2;local a3=Instance.new("TextLabel")a3.Name="Title"a3.Size=UDim2.new(1,-100,1,0)a3.Position=UDim2.new(0,12,0,0)a3.BackgroundTransparency=1;a3.Text="ESP Panel"a3.TextColor3=q;a3.Font=Enum.Font.SourceSansBold;a3.TextSize=18;a3.TextXAlignment=Enum.TextXAlignment.Left;a3.Parent=a2;local a4=Instance.new("TextButton")a4.Name="Minimize"a4.Size=UDim2.new(0,36,1,0)a4.Position=UDim2.new(1,-72,0,0)a4.BackgroundTransparency=1;a4.Text="—"a4.Font=Enum.Font.SourceSansBold;a4.TextSize=20;a4.TextColor3=r;a4.Parent=a2;z.MinimizeButton=a4;local a5=Instance.new("TextButton")a5.Name="Close"a5.Size=UDim2.new(0,36,1,0)a5.Position=UDim2.new(1,-36,0,0)a5.BackgroundTransparency=1;a5.Text="✕"a5.Font=Enum.Font.SourceSansBold;a5.TextSize=18;a5.TextColor3=r;a5.Parent=a2;z.CloseButton=a5;a4.MouseEnter:Connect(function()a4.TextColor3=q end)a4.MouseLeave:Connect(function()a4.TextColor3=r end)a5.MouseEnter:Connect(function()a5.TextColor3=u end)a5.MouseLeave:Connect(function()a5.TextColor3=r end)local a6=Instance.new("TextLabel")a6.Name="InputLabel"a6.Size=UDim2.new(1,0,0,18)a6.BackgroundTransparency=1;a6.Text="Toggle Player"a6.Font=Enum.Font.SourceSans;a6.TextSize=16;a6.TextColor3=r;a6.TextXAlignment=Enum.TextXAlignment.Left;a6.Parent=a0;local a7=Instance.new("TextBox")a7.Name="InputBox"a7.Size=UDim2.new(1,-82,0,36)a7.Position=UDim2.new(0,0,0,22)a7.PlaceholderText="Username or Display"a7.PlaceholderColor3=r;a7.ClearTextOnFocus=false;a7.BackgroundColor3=m;a7.TextColor3=q;a7.Font=Enum.Font.SourceSans;a7.TextSize=16;a7.Parent=a0;z.InputBox=a7;local a8=Instance.new("UICorner")a8.CornerRadius=UDim.new(0,6)a8.Parent=a7;local a9=Instance.new("UIStroke")a9.Color=n;a9.Thickness=1;a9.Parent=a7;local aa=G("ToggleButton","Toggle",a0)aa.Size=UDim2.new(0,70,0,36)aa.Position=UDim2.new(1,-70,0,22)aa.TextSize=15;z.ToggleButton=aa;local ab=Instance.new("TextLabel")ab.Name="ViewAllLabel"ab.Size=UDim2.new(0.5,0,0,36)ab.Position=UDim2.new(0,0,0,70)ab.BackgroundTransparency=1;ab.Text="View Everyone"ab.Font=Enum.Font.SourceSans;ab.TextSize=16;ab.TextColor3=r;ab.TextXAlignment=Enum.TextXAlignment.Left;ab.Parent=a0;local ac=Instance.new("TextButton")ac.Name="ViewAllSwitch"ac.Size=UDim2.new(0,50,0,26)ac.Position=UDim2.new(1,-50,0,75)ac.BackgroundColor3=u;ac.Text=""ac.Parent=a0;z.ViewAllSwitch=ac;local ad=Instance.new("UICorner")ad.CornerRadius=UDim.new(0.5,0)ad.Parent=ac;local ae=Instance.new("Frame")ae.Name="Knob"ae.Size=UDim2.new(0,20,0,20)ae.Position=UDim2.new(0,3,0.5,-10)ae.BackgroundColor3=q;ae.BorderSizePixel=0;ae.Parent=ac;z.ViewAllSwitchKnob=ae;local af=Instance.new("UICorner")af.CornerRadius=UDim.new(0.5,0)af.Parent=ae;local ag=Instance.new("TextLabel")ag.Name="ActiveLabel"ag.Size=UDim2.new(1,0,0,18)ag.Position=UDim2.new(0,0,0,120)ag.BackgroundTransparency=1;ag.Text="Active Players (0)"ag.Font=Enum.Font.SourceSans;ag.TextSize=16;ag.TextColor3=r;ag.TextXAlignment=Enum.TextXAlignment.Left;ag.Parent=a0;z.ActiveLabel=ag;local ah=Instance.new("ScrollingFrame")ah.Name="ActiveListFrame"ah.Size=UDim2.new(1,0,1,-142)ah.Position=UDim2.new(0,0,0,142)ah.BackgroundColor3=m;ah.BorderSizePixel=0;ah.ScrollBarThickness=6;ah.ScrollBarImageColor3=o;ah.Parent=a0;z.ActiveListFrame=ah;local ai=Instance.new("UICorner")ai.CornerRadius=UDim.new(0,6)ai.Parent=ah;local aj=Instance.new("UIListLayout")aj.Padding=UDim.new(0,4)aj.SortOrder=Enum.SortOrder.Name;aj.Parent=ah;local ak=Instance.new("UIPadding")ak.PaddingLeft=UDim.new(0,4)ak.PaddingRight=UDim.new(0,4)ak.PaddingTop=UDim.new(0,4)ak.PaddingBottom=UDim.new(0,4)ak.Parent=ah;M.Parent=f;return M end;local function al(am)if not am or am==e and h or w[am]then return end;local an=am.Character;if not an then return end;local ao=an:FindFirstChild("HumanoidRootPart")local ap=an:FindFirstChildOfClass("Humanoid")if not ao or not ap then return end;if w[am]then return end;local aq=Instance.new("BillboardGui")aq.Name="ESP_Billboard"aq.Adornee=ao;aq.Size=UDim2.new(0,150,0,50)aq.StudsOffset=Vector3.new(0,3,0)aq.AlwaysOnTop=true;aq.Parent=ao;local ar=Instance.new("Frame")ar.Name="ESPFrame"ar.Size=UDim2.new(1,0,1,0)ar.BackgroundTransparency=1;ar.Parent=aq;local as=Instance.new("TextLabel")as.Name="Name"as.Size=UDim2.new(1,0,0,20)as.Position=UDim2.new(0,0,0,0)as.BackgroundTransparency=1;as.Font=Enum.Font.SourceSansBold;as.TextScaled=false;as.TextSize=18;as.TextColor3=u;as.TextStrokeTransparency=0.5;as.Text=am.DisplayName;as.Parent=ar;local at=Instance.new("TextLabel")at.Name="Dist"at.Size=UDim2.new(1,0,0,16)at.Position=UDim2.new(0,0,0,18)at.BackgroundTransparency=1;at.Font=Enum.Font.SourceSans;at.TextScaled=false;at.TextSize=14;at.TextColor3=q;at.TextStrokeTransparency=0.6;at.Text=""at.Parent=ar;local au=Instance.new("Frame")au.Name="HealthBar"au.Size=UDim2.new(1,0,0,8)au.Position=UDim2.new(0,0,1,-8)au.BackgroundColor3=s;au.BorderSizePixel=0;au.Parent=ar;local av=Instance.new("UICorner")av.CornerRadius=UDim.new(0,3)av.Parent=au;local aw=Instance.new("Frame")aw.Name="Fill"aw.Size=UDim2.new(ap.Health/ap.MaxHealth,0,1,0)aw.BackgroundColor3=t;aw.BorderSizePixel=0;aw.Parent=au;local ax=Instance.new("UICorner")ax.CornerRadius=UDim.new(0,3)ax.Parent=aw;local ay=Instance.new("Frame")ay.Name="Box"ay.Size=UDim2.new(1,0,1,-12)ay.Position=UDim2.new(0,0,0,0)ay.BackgroundTransparency=1;ay.ZIndex=-1;ay.Parent=ar;local az=Instance.new("UIStroke")az.Color=u;az.Thickness=2;az.ApplyStrokeMode=Enum.ApplyStrokeMode.Border;az.Parent=ay;local aA={}table.insert(aA,ap.HealthChanged:Connect(function(aB)local aC=math.clamp(aB/ap.MaxHealth,0,1)c:Create(aw,TweenInfo.new(0.2),{Size=UDim2.new(aC,0,1,0)}):Play()if aC<0.3 then aw.BackgroundColor3=u elseif aC<0.6 then aw.BackgroundColor3=Color3.fromRGB(255,165,0)else aw.BackgroundColor3=t end end))w[am]={billboard=aq,nameLabel=as,distLabel=at,healthFill=aw,boxStroke=az,connections=aA}end;local function aD(am)local aE=w[am]if aE then for aF,aG in ipairs(aE.connections)do aG:Disconnect()end;if aE.billboard then aE.billboard:Destroy()end end;w[am]=nil end;local function aH(am,aE,aI)if not am or not am.Character then aD(am)return end;local ao=am.Character:FindFirstChild("HumanoidRootPart")if not ao then aD(am)return end;local aJ=aI-ao.Position.Magnitude;if i and aE.distLabel then aE.distLabel.Text=string.format("%.0f studs",aJ)end;local aK=am.Team==e.Team and t or u;if aE.nameLabel.TextColor3~=aK then aE.nameLabel.TextColor3=aK end;if aE.boxStroke.Color~=aK then aE.boxStroke.Color=aK end end;local function aL()z.ActiveListFrame:ClearAllChildren()local aM=0;local aj=Instance.new("UIListLayout")aj.Padding=UDim.new(0,4)aj.SortOrder=Enum.SortOrder.Name;aj.Parent=z.ActiveListFrame;for aN,aO in pairs(x)do if aO and aN then aM=aM+1;local aP=Instance.new("Frame")aP.Name=aN.Name;aP.Size=UDim2.new(1,0,0,28)aP.BackgroundColor3=l;aP.Parent=z.ActiveListFrame;local aQ=Instance.new("UICorner")aQ.CornerRadius=UDim.new(0,4)aQ.Parent=aP;local aR=Instance.new("TextLabel")aR.Size=UDim2.new(1,-30,1,0)aR.Position=UDim2.new(0,8,0,0)aR.BackgroundTransparency=1;aR.Text=aN.DisplayName.." (@"..aN.Name..")"aR.Font=Enum.Font.SourceSans;aR.TextSize=15;aR.TextColor3=aN.Team==e.Team and t or u;aR.TextXAlignment=Enum.TextXAlignment.Left;aR.Parent=aP;local aS=Instance.new("TextButton")aS.Size=UDim2.new(0,28,1,0)aS.Position=UDim2.new(1,-28,0,0)aS.BackgroundTransparency=1;aS.Text="✕"aS.Font=Enum.Font.SourceSansBold;aS.TextSize=16;aS.TextColor3=r;aS.Parent=aP;aS.MouseEnter:Connect(function()aS.TextColor3=u end)aS.MouseLeave:Connect(function()aS.TextColor3=r end)aS.MouseButton1Click:Connect(function()x[aN]=false;aD(aN)aL()end)end end;z.ActiveLabel.Text=string.format("Active Players (%d)",aM)end;local function aT(D)local aU=A(D)if aU==""then return nil end;for aF,aN in pairs(a:GetPlayers())do if A(aN.Name)==aU or A(aN.DisplayName)==aU then return aN end end;return nil end;local function aV()local aW=z.InputBox.Text;local aX=aT(aW)if not aX then warn("Player not found: "..tostring(aW))local aY=z.InputBox.BackgroundColor3;z.InputBox.BackgroundColor3=u;task.wait(0.3)z.InputBox.BackgroundColor3=aY;return end;if x[aX]then x[aX]=false;aD(aX)else x[aX]=true;if aX.Character then al(aX)end end;z.InputBox.Text=""aL()end;local function aZ(a_)y=a_;local b0=a_ and t or u;local b1=a_ and UDim2.new(1,-23,0.5,-10)or UDim2.new(0,3,0.5,-10)c:Create(z.ViewAllSwitch,TweenInfo.new(0.2),{BackgroundColor3=b0}):Play()c:Create(z.ViewAllSwitchKnob,TweenInfo.new(0.2,Enum.EasingStyle.Quad),{Position=b1}):Play()if a_ then for aF,aN in pairs(a:GetPlayers())do if not(aN==e and h)then x[aN]=true;if aN.Character then al(aN)end end end else for aN,aF in pairs(x)do x[aN]=false;aD(aN)end end;aL()end;local function b2()c:Create(z.PasswordOverlay,TweenInfo.new(0.3),{BackgroundTransparency=1}):Play()z.PasswordOverlay:Destroy()z.MainFrame.Visible=true end;local function b3()z.PassButton.MouseButton1Click:Connect(function()if z.PassBox.Text==g then b2()else z.PassBox.Text=""local b4=z.PasswordOverlay.Modal.Position;local b5=TweenInfo.new(0.06,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut,3,true)local b6=c:Create(z.PasswordOverlay.Modal,b5,{Position=b4+UDim2.new(0,6,0,0)})b6:Play()end end)z.PassCancelButton.MouseButton1Click:Connect(function()z.PasswordOverlay.Parent:Destroy()end)z.PassBox.FocusLost:Connect(function(b7)if b7 then z.PassButton.MouseButton1Click:Invoke()end end)z.GetKeyButton.MouseButton1Click:Connect(function()local b8=C("https://raw.githubusercontent.com/MegeTech/megeHub-ESP/refs/heads/main/--%20LocalScript%20(1).txt")local b9=z.GetKeyButton.Text;if b8 then z.ModalStatus.Text="Copied link to clipboard!"z.GetKeyButton.Text="Copied!"else z.ModalStatus.Text="Failed to copy. Please copy manually: https://raw.githubusercontent.com/MegeTech/megeHub-ESP/refs/heads/main/--%20LocalScript%20(1).txt"z.GetKeyButton.Text="Failed!"end;task.delay(2,function()if z.ModalStatus and z.ModalStatus.Parent then z.ModalStatus.Text=""end;if z.GetKeyButton and z.GetKeyButton.Parent then z.GetKeyButton.Text=b9 end end)end)end;local function ba()local bb,bc;z.Header.InputBegan:Connect(function(bd)if bd.UserInputType==Enum.UserInputType.MouseButton1 or bd.UserInputType==Enum.UserInputType.Touch then bb=true;bc=bd.Position;local b4=z.MainFrame.Position;local be;be=d.InputChanged:Connect(function(bd)if bd.UserInputType==Enum.UserInputType.MouseMovement or bd.UserInputType==Enum.UserInputType.Touch then if bb then local bf=bd.Position-bc;z.MainFrame.Position=UDim2.new(0,b4.X.Offset+bf.X,0,b4.Y.Offset+bf.Y)end end end)local bg;bg=d.InputEnded:Connect(function(bd)if bd.UserInputType==Enum.UserInputType.MouseButton1 or bd.UserInputType==Enum.UserInputType.Touch then bb=false;if be then be:Disconnect()end;if bg then bg:Disconnect()end end end)end end)local bh=false;z.MinimizeButton.MouseButton1Click:Connect(function()bh=not bh;z.MainContent.Visible=not bh;local bi=bh and UDim2.new(j.X.Scale,j.X.Offset,0,k)or j;c:Create(z.MainFrame,TweenInfo.new(0.2,Enum.EasingStyle.Quad),{Size=bi}):Play()end)z.CloseButton.MouseButton1Click:Connect(function()z.MainFrame.Parent:Destroy()end)z.ToggleButton.MouseButton1Click:Connect(aV)z.InputBox.FocusLost:Connect(function(b7)if b7 then aV()end end)z.ViewAllSwitch.MouseButton1Click:Connect(function()aZ(not y)end)end;L()b3()ba()a.PlayerAdded:Connect(function(aN)if y then x[aN]=true;aN.CharacterAdded:Connect(function(an)task.wait(0.1)if x[aN]then al(aN)end end)aL()end;aN.CharacterAdded:Connect(function(an)task.wait(0.1)if x[aN]then aD(aN)al(aN)end end)end)a.PlayerRemoving:Connect(function(aN)x[aN]=nil;aD(aN)aL()end)for aF,aN in pairs(a:GetPlayers())do aN.CharacterAdded:Connect(function(an)task.wait(0.1)if x[aN]then aD(aN)al(aN)end end)end;b.RenderStepped:Connect(function()if not e.Character or not e.Character:FindFirstChild("HumanoidRootPart")then for aN,aF in pairs(w)do aD(aN)end;return end;local bj=e.Character.HumanoidRootPart;for am,aE in pairs(w)do aH(am,aE,bj.Position)end end)
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+
+local FUNCTION = "EXECUTE_ESP_HACKS" 
+local EXCLUDE_LOCALPLAYER = true 
+local ShowDistance = true
+local PANEL_SIZE = UDim2.new(0, 320, 0, 400)
+local HEADER_HEIGHT = 36
+
+
+local C_Background = Color3.fromRGB(35, 37, 40) 
+local C_Background_Lighter = Color3.fromRGB(44, 46, 51) 
+local C_Background_Lightest = Color3.fromRGB(54, 57, 63) 
+local C_Primary = Color3.fromRGB(0, 162, 255) 
+local C_Primary_Dark = Color3.fromRGB(0, 130, 200)
+local C_Text = Color3.fromRGB(240, 240, 240) 
+local C_Text_Dim = Color3.fromRGB(180, 180, 180) 
+local C_Text_Dark = Color3.fromRGB(20, 20, 20)
+local C_Success = Color3.fromRGB(80, 220, 120) 
+local C_Error = Color3.fromRGB(255, 80, 80) 
+local C_Teal = Color3.fromRGB(0, 200, 200) 
+
+
+local ESPs = {} 
+local ESPEnabled = {} 
+local viewAllEnabled = false
+local UI = {} 
+
+
+local function norm(s)
+	return (s and tostring(s) or ""):lower()
+end
+
+local function tryCopyToClipboard(text)
+	local ok, err = pcall(function() setclipboard(text) end)
+	return ok
+end
+
+
+local function createButton(name, text, parent)
+	local btn = Instance.new("TextButton")
+	btn.Name = name
+	btn.Text = text
+	btn.Parent = parent
+	btn.BackgroundColor3 = C_Primary
+	btn.TextColor3 = C_Text
+	btn.Font = Enum.Font.SourceSansBold
+	btn.TextSize = 16
+	btn.BorderSizePixel = 0
+	
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0, 6)
+	corner.Parent = btn
+	
+	
+	btn.MouseEnter:Connect(function()
+		TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = C_Primary_Dark}):Play()
+	end)
+	btn.MouseLeave:Connect(function()
+		TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = C_Primary}):Play()
+	end)
+	
+	return btn
+end
+
+
+local function createGUI()
+	local screenGui = Instance.new("ScreenGui")
+	screenGui.Name = "ModernESPUI_v2"
+	screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	screenGui.ResetOnSpawn = false
+	
+	
+	local overlay = Instance.new("Frame")
+	overlay.Name = "PasswordOverlay"
+	overlay.Size = UDim2.new(1,0,1,0)
+	overlay.Position = UDim2.new(0,0,0,0)
+	overlay.BackgroundColor3 = Color3.fromRGB(0,0,0)
+	overlay.BackgroundTransparency = 0.5
+	overlay.ZIndex = 10
+	overlay.Parent = screenGui
+	UI.PasswordOverlay = overlay
+
+	local modal = Instance.new("Frame")
+	modal.Name = "Modal"
+	modal.Size = UDim2.new(0, 360, 0, 220)
+	modal.Position = UDim2.new(0.5, -180, 0.5, -110)
+	modal.BackgroundColor3 = C_Background
+	modal.BorderSizePixel = 0
+	modal.Parent = overlay
+	
+	local modalCorner = Instance.new("UICorner")
+	modalCorner.CornerRadius = UDim.new(0, 8)
+	modalCorner.Parent = modal
+	
+	local modalPadding = Instance.new("UIPadding")
+	modalPadding.PaddingLeft = UDim.new(0, 16)
+	modalPadding.PaddingRight = UDim.new(0, 16)
+	modalPadding.PaddingTop = UDim.new(0, 16)
+	modalPadding.PaddingBottom = UDim.new(0, 16)
+	modalPadding.Parent = modal
+
+	local modalTitle = Instance.new("TextLabel")
+	modalTitle.Name = "Title"
+	modalTitle.Size = UDim2.new(1, 0, 0, 30)
+	modalTitle.BackgroundTransparency = 1
+	modalTitle.Text = "Panel Authentication"
+	modalTitle.Font = Enum.Font.SourceSansBold
+	modalTitle.TextSize = 20
+	modalTitle.TextColor3 = C_Text
+	modalTitle.TextXAlignment = Enum.TextXAlignment.Left
+	modalTitle.Parent = modal
+
+	local passBox = Instance.new("TextBox")
+	passBox.Name = "PassBox"
+	passBox.Size = UDim2.new(1, 0, 0, 36)
+	passBox.Position = UDim2.new(0, 0, 0, 50)
+	passBox.PlaceholderText = "Password"
+	passBox.PlaceholderColor3 = C_Text_Dim
+	passBox.BackgroundColor3 = C_Background_Lighter
+	passBox.TextColor3 = C_Text
+	passBox.ClearTextOnFocus = false
+	passBox.Font = Enum.Font.SourceSans
+	passBox.TextSize = 16
+	passBox.Text = ""
+	passBox.Parent = modal
+	UI.PassBox = passBox
+	
+	local passCorner = Instance.new("UICorner")
+	passCorner.CornerRadius = UDim.new(0, 6)
+	passCorner.Parent = passBox
+	
+	local passStroke = Instance.new("UIStroke")
+	passStroke.Color = C_Background_Lightest
+	passStroke.Thickness = 1
+	passStroke.Parent = passBox
+
+	local getKeyButton = createButton("GetKey", "GET KEY", modal)
+	getKeyButton.Size = UDim2.new(1, 0, 0, 30)
+	getKeyButton.Position = UDim2.new(0, 0, 0, 96)
+	getKeyButton.BackgroundColor3 = C_Background_Lighter
+	getKeyButton.TextColor3 = C_Text_Dim
+	UI.GetKeyButton = getKeyButton
+	
+	local modalStatus = Instance.new("TextLabel")
+	modalStatus.Name = "Status"
+	modalStatus.Size = UDim2.new(1, 0, 0, 18)
+	modalStatus.Position = UDim2.new(0, 0, 0, 132)
+	modalStatus.BackgroundTransparency = 1
+	modalStatus.Text = ""
+	modalStatus.Font = Enum.Font.SourceSans
+	modalStatus.TextSize = 14
+	modalStatus.TextColor3 = C_Text_Dim
+	modalStatus.Parent = modal
+	UI.ModalStatus = modalStatus
+
+	local passButton = createButton("Unlock", "Unlock", modal)
+	passButton.Size = UDim2.new(0.5, -4, 0, 36)
+	passButton.Position = UDim2.new(0, 0, 1, -36)
+	UI.PassButton = passButton
+
+	local cancelButton = createButton("Close", "Close UI", modal)
+	cancelButton.Name = "Close"
+	cancelButton.Size = UDim2.new(0.5, -4, 0, 36)
+	cancelButton.Position = UDim2.new(0.5, 4, 1, -36)
+	cancelButton.BackgroundColor3 = C_Error
+	UI.PassCancelButton = cancelButton
+	
+	cancelButton.MouseEnter:Connect(function() TweenService:Create(cancelButton, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(200, 70, 70)}):Play() end)
+	cancelButton.MouseLeave:Connect(function() TweenService:Create(cancelButton, TweenInfo.new(0.15), {BackgroundColor3 = C_Error}):Play() end)
+	
+	
+	local mainFrame = Instance.new("Frame")
+	mainFrame.Name = "MainFrame"
+	mainFrame.Size = PANEL_SIZE
+	mainFrame.Position = UDim2.new(0, 60, 0, 60)
+	mainFrame.BackgroundColor3 = C_Background
+	mainFrame.BorderSizePixel = 0
+	mainFrame.AnchorPoint = Vector2.new(0,0)
+	mainFrame.Active = true
+	mainFrame.ClipsDescendants = true
+	mainFrame.Visible = false 
+	mainFrame.ZIndex = 5
+	mainFrame.Parent = screenGui
+	UI.MainFrame = mainFrame
+
+	local mainCorner = Instance.new("UICorner")
+	mainCorner.CornerRadius = UDim.new(0, 8)
+	mainCorner.Parent = mainFrame
+	
+	local mainContent = Instance.new("Frame") 
+	mainContent.Name = "MainContent"
+	mainContent.Size = UDim2.new(1, 0, 1, -HEADER_HEIGHT)
+	mainContent.Position = UDim2.new(0, 0, 0, HEADER_HEIGHT)
+	mainContent.BackgroundTransparency = 1
+	mainContent.Parent = mainFrame
+	UI.MainContent = mainContent
+	
+	local mainPadding = Instance.new("UIPadding")
+	mainPadding.PaddingLeft = UDim.new(0, 12)
+	mainPadding.PaddingRight = UDim.new(0, 12)
+	mainPadding.PaddingTop = UDim.new(0, 12)
+	mainPadding.PaddingBottom = UDim.new(0, 12)
+	mainPadding.Parent = mainContent
+	
+	local header = Instance.new("Frame")
+	header.Name = "Header"
+	header.Size = UDim2.new(1, 0, 0, HEADER_HEIGHT)
+	header.BackgroundColor3 = C_Background_Lighter
+	header.BorderSizePixel = 0
+	header.Parent = mainFrame
+	UI.Header = header
+
+	local title = Instance.new("TextLabel")
+	title.Name = "Title"
+	title.Size = UDim2.new(1, -100, 1, 0)
+	title.Position = UDim2.new(0, 12, 0, 0)
+	title.BackgroundTransparency = 1
+	title.Text = "ESP Panel"
+	title.TextColor3 = C_Text
+	title.Font = Enum.Font.SourceSansBold
+	title.TextSize = 18
+	title.TextXAlignment = Enum.TextXAlignment.Left
+	title.Parent = header
+	
+	local minimizeButton = Instance.new("TextButton")
+	minimizeButton.Name = "Minimize"
+	minimizeButton.Size = UDim2.new(0, 36, 1, 0)
+	minimizeButton.Position = UDim2.new(1, -72, 0, 0)
+	minimizeButton.BackgroundTransparency = 1
+	minimizeButton.Text = "—"
+	minimizeButton.Font = Enum.Font.SourceSansBold
+	minimizeButton.TextSize = 20
+	minimizeButton.TextColor3 = C_Text_Dim
+	minimizeButton.Parent = header
+	UI.MinimizeButton = minimizeButton
+	
+	local closeButton = Instance.new("TextButton")
+	closeButton.Name = "Close"
+	closeButton.Size = UDim2.new(0, 36, 1, 0)
+	closeButton.Position = UDim2.new(1, -36, 0, 0)
+	closeButton.BackgroundTransparency = 1
+	closeButton.Text = "✕"
+	closeButton.Font = Enum.Font.SourceSansBold
+	closeButton.TextSize = 18
+	closeButton.TextColor3 = C_Text_Dim
+	closeButton.Parent = header
+	UI.CloseButton = closeButton
+	
+	minimizeButton.MouseEnter:Connect(function() minimizeButton.TextColor3 = C_Text end)
+	minimizeButton.MouseLeave:Connect(function() minimizeButton.TextColor3 = C_Text_Dim end)
+	closeButton.MouseEnter:Connect(function() closeButton.TextColor3 = C_Error end)
+	closeButton.MouseLeave:Connect(function() closeButton.TextColor3 = C_Text_Dim end)
+	
+	
+	
+	local inputLabel = Instance.new("TextLabel")
+	inputLabel.Name = "InputLabel"
+	inputLabel.Size = UDim2.new(1, 0, 0, 18)
+	inputLabel.BackgroundTransparency = 1
+	inputLabel.Text = "Toggle Player"
+	inputLabel.Font = Enum.Font.SourceSans
+	inputLabel.TextSize = 16
+	inputLabel.TextColor3 = C_Text_Dim
+	inputLabel.TextXAlignment = Enum.TextXAlignment.Left
+	inputLabel.Parent = mainContent
+	
+	local inputBox = Instance.new("TextBox")
+	inputBox.Name = "InputBox"
+	inputBox.Size = UDim2.new(1, -82, 0, 36)
+	inputBox.Position = UDim2.new(0, 0, 0, 22)
+	inputBox.PlaceholderText = "Username or Display"
+	inputBox.PlaceholderColor3 = C_Text_Dim
+	inputBox.ClearTextOnFocus = false
+	inputBox.BackgroundColor3 = C_Background_Lighter
+	inputBox.TextColor3 = C_Text
+	inputBox.Font = Enum.Font.SourceSans
+	inputBox.TextSize = 16
+	inputBox.Parent = mainContent
+	UI.InputBox = inputBox
+	
+	local inputCorner = Instance.new("UICorner")
+	inputCorner.CornerRadius = UDim.new(0, 6)
+	inputCorner.Parent = inputBox
+	
+	local inputStroke = Instance.new("UIStroke")
+	inputStroke.Color = C_Background_Lightest
+	inputStroke.Thickness = 1
+	inputStroke.Parent = inputBox
+	
+	local toggleButton = createButton("ToggleButton", "Toggle", mainContent)
+	toggleButton.Size = UDim2.new(0, 70, 0, 36)
+	toggleButton.Position = UDim2.new(1, -70, 0, 22)
+	toggleButton.TextSize = 15
+	UI.ToggleButton = toggleButton
+	
+	
+	local viewAllLabel = Instance.new("TextLabel")
+	viewAllLabel.Name = "ViewAllLabel"
+	viewAllLabel.Size = UDim2.new(0.5, 0, 0, 36)
+	viewAllLabel.Position = UDim2.new(0, 0, 0, 70)
+	viewAllLabel.BackgroundTransparency = 1
+	viewAllLabel.Text = "View Everyone"
+	viewAllLabel.Font = Enum.Font.SourceSans
+	viewAllLabel.TextSize = 16
+	viewAllLabel.TextColor3 = C_Text_Dim
+	viewAllLabel.TextXAlignment = Enum.TextXAlignment.Left
+	viewAllLabel.Parent = mainContent
+
+	local viewAllSwitch = Instance.new("TextButton")
+	viewAllSwitch.Name = "ViewAllSwitch"
+	viewAllSwitch.Size = UDim2.new(0, 50, 0, 26)
+	viewAllSwitch.Position = UDim2.new(1, -50, 0, 75)
+	viewAllSwitch.BackgroundColor3 = C_Error
+	viewAllSwitch.Text = ""
+	viewAllSwitch.Parent = mainContent
+	UI.ViewAllSwitch = viewAllSwitch
+	
+	local switchCorner = Instance.new("UICorner")
+	switchCorner.CornerRadius = UDim.new(0.5, 0)
+	switchCorner.Parent = viewAllSwitch
+	
+	local switchKnob = Instance.new("Frame")
+	switchKnob.Name = "Knob"
+	switchKnob.Size = UDim2.new(0, 20, 0, 20)
+	switchKnob.Position = UDim2.new(0, 3, 0.5, -10)
+	switchKnob.BackgroundColor3 = C_Text
+	switchKnob.BorderSizePixel = 0
+	switchKnob.Parent = viewAllSwitch
+	UI.ViewAllSwitchKnob = switchKnob
+	
+	local knobCorner = Instance.new("UICorner")
+	knobCorner.CornerRadius = UDim.new(0.5, 0)
+	knobCorner.Parent = switchKnob
+	
+	
+	local activeLabel = Instance.new("TextLabel")
+	activeLabel.Name = "ActiveLabel"
+	activeLabel.Size = UDim2.new(1, 0, 0, 18)
+	activeLabel.Position = UDim2.new(0, 0, 0, 120)
+	activeLabel.BackgroundTransparency = 1
+	activeLabel.Text = "Active Players (0)"
+	activeLabel.Font = Enum.Font.SourceSans
+	activeLabel.TextSize = 16
+	activeLabel.TextColor3 = C_Text_Dim
+	activeLabel.TextXAlignment = Enum.TextXAlignment.Left
+	activeLabel.Parent = mainContent
+	UI.ActiveLabel = activeLabel
+	
+	local activeListFrame = Instance.new("ScrollingFrame")
+	activeListFrame.Name = "ActiveListFrame"
+	activeListFrame.Size = UDim2.new(1, 0, 1, -142)
+	activeListFrame.Position = UDim2.new(0, 0, 0, 142)
+	activeListFrame.BackgroundColor3 = C_Background_Lighter
+	activeListFrame.BorderSizePixel = 0
+	activeListFrame.ScrollBarThickness = 6
+	activeListFrame.ScrollBarImageColor3 = C_Primary
+	activeListFrame.Parent = mainContent
+	UI.ActiveListFrame = activeListFrame
+	
+	local listCorner = Instance.new("UICorner")
+	listCorner.CornerRadius = UDim.new(0, 6)
+	listCorner.Parent = activeListFrame
+	
+	local listLayout = Instance.new("UIListLayout")
+	listLayout.Padding = UDim.new(0, 4)
+	listLayout.SortOrder = Enum.SortOrder.Name
+	listLayout.Parent = activeListFrame
+	
+	local listPadding = Instance.new("UIPadding")
+	listPadding.PaddingLeft = UDim.new(0, 4)
+	listPadding.PaddingRight = UDim.new(0, 4)
+	listPadding.PaddingTop = UDim.new(0, 4)
+	listPadding.PaddingBottom = UDim.new(0, 4)
+	listPadding.Parent = activeListFrame
+	
+	
+	screenGui.Parent = PlayerGui
+	return screenGui
+end
+
+
+local function createESP(player)
+	if not player or player == LocalPlayer and EXCLUDE_LOCALPLAYER or ESPs[player] then return end
+	local char = player.Character
+	if not char then return end
+	local root = char:FindFirstChild("HumanoidRootPart")
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if not root or not hum then return end
+	
+	
+	if ESPs[player] then return end
+
+	local billboard = Instance.new("BillboardGui")
+	billboard.Name = "ESP_Billboard"
+	billboard.Adornee = root
+	billboard.Size = UDim2.new(0, 150, 0, 50)
+	billboard.StudsOffset = Vector3.new(0, 3, 0)
+	billboard.AlwaysOnTop = true
+	billboard.Parent = root
+	
+	
+	local espFrame = Instance.new("Frame")
+	espFrame.Name = "ESPFrame"
+	espFrame.Size = UDim2.new(1, 0, 1, 0)
+	espFrame.BackgroundTransparency = 1
+	espFrame.Parent = billboard
+
+	
+	local nameLabel = Instance.new("TextLabel")
+	nameLabel.Name = "Name"
+	nameLabel.Size = UDim2.new(1, 0, 0, 20)
+	nameLabel.Position = UDim2.new(0, 0, 0, 0)
+	nameLabel.BackgroundTransparency = 1
+	nameLabel.Font = Enum.Font.SourceSansBold
+	nameLabel.TextScaled = false
+	nameLabel.TextSize = 18
+	nameLabel.TextColor3 = C_Error
+	nameLabel.TextStrokeTransparency = 0.5
+	nameLabel.Text = player.DisplayName
+	nameLabel.Parent = espFrame
+	
+	
+	local distLabel = Instance.new("TextLabel")
+	distLabel.Name = "Dist"
+	distLabel.Size = UDim2.new(1, 0, 0, 16)
+	distLabel.Position = UDim2.new(0, 0, 0, 18)
+	distLabel.BackgroundTransparency = 1
+	distLabel.Font = Enum.Font.SourceSans
+	distLabel.TextScaled = false
+	distLabel.TextSize = 14
+	distLabel.TextColor3 = C_Text
+	distLabel.TextStrokeTransparency = 0.6
+	distLabel.Text = ""
+	distLabel.Parent = espFrame
+	
+	
+	local healthBar = Instance.new("Frame")
+	healthBar.Name = "HealthBar"
+	healthBar.Size = UDim2.new(1, 0, 0, 8)
+	healthBar.Position = UDim2.new(0, 0, 1, -8)
+	healthBar.BackgroundColor3 = C_Text_Dark
+	healthBar.BorderSizePixel = 0
+	healthBar.Parent = espFrame
+	
+	local healthCorner = Instance.new("UICorner")
+	healthCorner.CornerRadius = UDim.new(0, 3)
+	healthCorner.Parent = healthBar
+	
+	local healthFill = Instance.new("Frame")
+	healthFill.Name = "Fill"
+	healthFill.Size = UDim2.new(hum.Health / hum.MaxHealth, 0, 1, 0)
+	healthFill.BackgroundColor3 = C_Success
+	healthFill.BorderSizePixel = 0
+	healthFill.Parent = healthBar
+	
+	local healthFillCorner = Instance.new("UICorner")
+	healthFillCorner.CornerRadius = UDim.new(0, 3)
+	healthFillCorner.Parent = healthFill
+	
+	
+	local box = Instance.new("Frame")
+	box.Name = "Box"
+	box.Size = UDim2.new(1, 0, 1, -12) 
+	box.Position = UDim2.new(0, 0, 0, 0)
+	box.BackgroundTransparency = 1
+	box.ZIndex = -1
+	box.Parent = espFrame
+	
+	local boxStroke = Instance.new("UIStroke")
+	boxStroke.Color = C_Error
+	boxStroke.Thickness = 2
+	boxStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	boxStroke.Parent = box
+
+	
+	local connections = {}
+	
+	
+	table.insert(connections, hum.HealthChanged:Connect(function(health)
+		local perc = math.clamp(health / hum.MaxHealth, 0, 1)
+		TweenService:Create(healthFill, TweenInfo.new(0.2), {Size = UDim2.new(perc, 0, 1, 0)}):Play()
+		if perc < 0.3 then
+			healthFill.BackgroundColor3 = C_Error
+		elseif perc < 0.6 then
+			healthFill.BackgroundColor3 = Color3.fromRGB(255, 165, 0) 
+		else
+			healthFill.BackgroundColor3 = C_Success
+		end
+	end))
+
+	ESPs[player] = {
+		billboard = billboard,
+		nameLabel = nameLabel,
+		distLabel = distLabel,
+		healthFill = healthFill,
+		boxStroke = boxStroke,
+		connections = connections
+	}
+end
+
+local function removeESP(player)
+	local data = ESPs[player]
+	if data then
+		
+		for _, conn in ipairs(data.connections) do
+			conn:Disconnect()
+		end
+		if data.billboard then
+			data.billboard:Destroy()
+		end
+	end
+	ESPs[player] = nil
+end
+
+
+local function updateESP(player, data, myRootPos)
+	if not player or not player.Character then
+		removeESP(player)
+		return
+	end
+	local root = player.Character:FindFirstChild("HumanoidRootPart")
+	if not root then
+		removeESP(player)
+		return
+	end
+	
+	
+	local dist = (myRootPos - root.Position).Magnitude
+	if ShowDistance and data.distLabel then
+		data.distLabel.Text = string.format("%.0f studs", dist)
+	end
+	
+	
+	local color = (player.Team == LocalPlayer.Team) and C_Success or C_Error
+	if data.nameLabel.TextColor3 ~= color then
+		data.nameLabel.TextColor3 = color
+	end
+	if data.boxStroke.Color ~= color then
+		data.boxStroke.Color = color
+	end
+end
+
+
+local function updateActiveList()
+	UI.ActiveListFrame:ClearAllChildren()
+	local count = 0
+	
+	
+	local listLayout = Instance.new("UIListLayout")
+	listLayout.Padding = UDim.new(0, 4)
+	listLayout.SortOrder = Enum.SortOrder.Name
+	listLayout.Parent = UI.ActiveListFrame
+	
+	for p, enabled in pairs(ESPEnabled) do
+		if enabled and p then
+			count = count + 1
+			local playerTag = Instance.new("Frame")
+			playerTag.Name = p.Name
+			playerTag.Size = UDim2.new(1, 0, 0, 28)
+			playerTag.BackgroundColor3 = C_Background
+			playerTag.Parent = UI.ActiveListFrame
+			
+			local tagCorner = Instance.new("UICorner")
+			tagCorner.CornerRadius = UDim.new(0, 4)
+			tagCorner.Parent = playerTag
+			
+			local tagName = Instance.new("TextLabel")
+			tagName.Size = UDim2.new(1, -30, 1, 0)
+			tagName.Position = UDim2.new(0, 8, 0, 0)
+			tagName.BackgroundTransparency = 1
+			tagName.Text = p.DisplayName .. " (@" .. p.Name .. ")"
+			tagName.Font = Enum.Font.SourceSans
+			tagName.TextSize = 15
+			tagName.TextColor3 = (p.Team == LocalPlayer.Team) and C_Success or C_Error
+			tagName.TextXAlignment = Enum.TextXAlignment.Left
+			tagName.Parent = playerTag
+			
+			
+			local tagRemove = Instance.new("TextButton")
+			tagRemove.Size = UDim2.new(0, 28, 1, 0)
+			tagRemove.Position = UDim2.new(1, -28, 0, 0)
+			tagRemove.BackgroundTransparency = 1
+			tagRemove.Text = "✕"
+			tagRemove.Font = Enum.Font.SourceSansBold
+			tagRemove.TextSize = 16
+			tagRemove.TextColor3 = C_Text_Dim
+			tagRemove.Parent = playerTag
+			
+			tagRemove.MouseEnter:Connect(function() tagRemove.TextColor3 = C_Error end)
+			tagRemove.MouseLeave:Connect(function() tagRemove.TextColor3 = C_Text_Dim end)
+			
+			tagRemove.MouseButton1Click:Connect(function()
+				ESPEnabled[p] = false
+				removeESP(p)
+				updateActiveList()
+			end)
+		end
+	end
+	
+	UI.ActiveLabel.Text = string.format("Active Players (%d)", count)
+end
+
+local function findPlayerByNameOrDisplay(text)
+	local t = norm(text)
+	if t == "" then return nil end
+	for _, p in pairs(Players:GetPlayers()) do
+		if norm(p.Name) == t or norm(p.DisplayName) == t then
+			return p
+		end
+	end
+	return nil
+end
+
+
+local function onTogglePlayer()
+	local txt = UI.InputBox.Text
+	local target = findPlayerByNameOrDisplay(txt)
+	
+	if not target then
+		warn("Player not found: "..tostring(txt))
+		
+		local oldColor = UI.InputBox.BackgroundColor3
+		UI.InputBox.BackgroundColor3 = C_Error
+		task.wait(0.3)
+		UI.InputBox.BackgroundColor3 = oldColor
+		return
+	end
+	
+	if ESPEnabled[target] then
+		ESPEnabled[target] = false
+		removeESP(target)
+	else
+		ESPEnabled[target] = true
+		if target.Character then createESP(target) end
+	end
+	
+	UI.InputBox.Text = ""
+	updateActiveList()
+end
+
+
+local function setViewAll(on)
+	viewAllEnabled = on
+	
+	
+	local targetColor = on and C_Success or C_Error
+	local targetPos = on and UDim2.new(1, -23, 0.5, -10) or UDim2.new(0, 3, 0.5, -10)
+	
+	TweenService:Create(UI.ViewAllSwitch, TweenInfo.new(0.2), {BackgroundColor3 = targetColor}):Play()
+	TweenService:Create(UI.ViewAllSwitchKnob, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = targetPos}):Play()
+	
+	
+	if on then
+		for _, p in pairs(Players:GetPlayers()) do
+			if not (p == LocalPlayer and EXCLUDE_LOCALPLAYER) then
+				ESPEnabled[p] = true
+				if p.Character then createESP(p) end
+			end
+		end
+	else
+		
+		
+		for p, _ in pairs(ESPEnabled) do
+			ESPEnabled[p] = false
+			removeESP(p)
+		end
+	end
+	
+	updateActiveList()
+end
+
+
+local function unlockUI()
+	TweenService:Create(UI.PasswordOverlay, TweenInfo.new(0.3), {BackgroundTransparency = 1}):Play()
+	UI.PasswordOverlay:Destroy() 
+	UI.MainFrame.Visible = true
+end
+
+
+local function initPasswordModal()
+	UI.PassButton.MouseButton1Click:Connect(function()
+		if UI.PassBox.Text == FUNCTION then
+			unlockUI()
+		else
+			UI.PassBox.Text = ""
+			
+			local startPos = UI.PasswordOverlay.Modal.Position
+			local tweenInfo = TweenInfo.new(0.06, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 3, true)
+			local tween = TweenService:Create(UI.PasswordOverlay.Modal, tweenInfo, {Position = startPos + UDim2.new(0,6,0,0)})
+			tween:Play()
+		end
+	end)
+
+	UI.PassCancelButton.MouseButton1Click:Connect(function()
+		UI.PasswordOverlay.Parent:Destroy() 
+	end)
+
+	UI.PassBox.FocusLost:Connect(function(enterPressed)
+		if enterPressed then
+			UI.PassButton.MouseButton1Click:Invoke()
+		end
+	end)
+	
+	UI.GetKeyButton.MouseButton1Click:Connect(function()
+		local success = tryCopyToClipboard("https://raw.githubusercontent.com/MegeTech/megeHub-ESP/refs/heads/main/--%20LocalScript%20(1).txt")
+		local oldText = UI.GetKeyButton.Text
+		if success then
+			UI.ModalStatus.Text = "Copied link to clipboard!"
+			UI.GetKeyButton.Text = "Copied!"
+		else
+			UI.ModalStatus.Text = "Failed to copy. Please copy manually: https://raw.githubusercontent.com/MegeTech/megeHub-ESP/refs/heads/main/--%20LocalScript%20(1).txt"
+			UI.GetKeyButton.Text = "Failed!"
+		end
+		
+		task.delay(2, function()
+			if UI.ModalStatus and UI.ModalStatus.Parent then UI.ModalStatus.Text = "" end
+			if UI.GetKeyButton and UI.GetKeyButton.Parent then UI.GetKeyButton.Text = oldText end
+		end)
+	end)
+end
+
+
+local function initMainPanel()
+	
+	local dragging, dragStart
+	UI.Header.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			local startPos = UI.MainFrame.Position
+			
+			local moveConn
+			moveConn = UserInputService.InputChanged:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+					if dragging then
+						local delta = input.Position - dragStart
+						UI.MainFrame.Position = UDim2.new(0, startPos.X.Offset + delta.X, 0, startPos.Y.Offset + delta.Y)
+					end
+				end
+			end)
+			
+			local endConn
+			endConn = UserInputService.InputEnded:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+					dragging = false
+					if moveConn then moveConn:Disconnect() end
+					if endConn then endConn:Disconnect() end
+				end
+			end)
+		end
+	end)
+
+	
+	local minimized = false
+	UI.MinimizeButton.MouseButton1Click:Connect(function()
+		minimized = not minimized
+		UI.MainContent.Visible = not minimized
+		local targetSize = minimized and UDim2.new(PANEL_SIZE.X.Scale, PANEL_SIZE.X.Offset, 0, HEADER_HEIGHT) or PANEL_SIZE
+		TweenService:Create(UI.MainFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Size = targetSize}):Play()
+	end)
+
+	
+	UI.CloseButton.MouseButton1Click:Connect(function()
+		UI.MainFrame.Parent:Destroy()
+	end)
+	
+	
+	UI.ToggleButton.MouseButton1Click:Connect(onTogglePlayer)
+	UI.InputBox.FocusLost:Connect(function(enterPressed)
+		if enterPressed then
+			onTogglePlayer()
+		end
+	end)
+	
+	UI.ViewAllSwitch.MouseButton1Click:Connect(function()
+		setViewAll(not viewAllEnabled)
+	end)
+end
+
+
+createGUI()
+
+initPasswordModal()
+initMainPanel()
+
+
+Players.PlayerAdded:Connect(function(p)
+	if viewAllEnabled then
+		ESPEnabled[p] = true
+		
+		p.CharacterAdded:Connect(function(char)
+			task.wait(0.1) 
+			if ESPEnabled[p] then createESP(p) end
+		end)
+		updateActiveList()
+	end
+	
+	
+	p.CharacterAdded:Connect(function(char)
+		task.wait(0.1)
+		if ESPEnabled[p] then
+			removeESP(p) 
+			createESP(p)
+		end
+	end)
+end)
+
+Players.PlayerRemoving:Connect(function(p)
+	ESPEnabled[p] = nil
+	removeESP(p)
+	updateActiveList()
+end)
+
+
+for _, p in pairs(Players:GetPlayers()) do
+	p.CharacterAdded:Connect(function(char)
+		task.wait(0.1)
+		if ESPEnabled[p] then
+			removeESP(p) 
+			createESP(p)
+		end
+	end)
+end
+
+
+RunService.RenderStepped:Connect(function()
+	if not LocalPlayer.Character or not LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+		
+		for p, _ in pairs(ESPs) do removeESP(p) end
+		return
+	end
+	
+	local myRoot = LocalPlayer.Character.HumanoidRootPart
+	
+	for player, data in pairs(ESPs) do
+		updateESP(player, data, myRoot.Position)
+	end
+end)	local ok, err = pcall(function() setclipboard(text) end)
+	return ok
+end
+
+
+local function createButton(name, text, parent)
+	local btn = Instance.new("TextButton")
+	btn.Name = name
+	btn.Text = text
+	btn.Parent = parent
+	btn.BackgroundColor3 = C_Primary
+	btn.TextColor3 = C_Text
+	btn.Font = Enum.Font.SourceSansBold
+	btn.TextSize = 16
+	btn.BorderSizePixel = 0
+	
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0, 6)
+	corner.Parent = btn
+	
+	
+	btn.MouseEnter:Connect(function()
+		TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = C_Primary_Dark}):Play()
+	end)
+	btn.MouseLeave:Connect(function()
+		TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = C_Primary}):Play()
+	end)
+	
+	return btn
+end
+
+
+local function createGUI()
+	local screenGui = Instance.new("ScreenGui")
+	screenGui.Name = "ModernESPUI_v2"
+	screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	screenGui.ResetOnSpawn = false
+	
+	
+	local overlay = Instance.new("Frame")
+	overlay.Name = "PasswordOverlay"
+	overlay.Size = UDim2.new(1,0,1,0)
+	overlay.Position = UDim2.new(0,0,0,0)
+	overlay.BackgroundColor3 = Color3.fromRGB(0,0,0)
+	overlay.BackgroundTransparency = 0.5
+	overlay.ZIndex = 10
+	overlay.Parent = screenGui
+	UI.PasswordOverlay = overlay
+
+	local modal = Instance.new("Frame")
+	modal.Name = "Modal"
+	modal.Size = UDim2.new(0, 360, 0, 220)
+	modal.Position = UDim2.new(0.5, -180, 0.5, -110)
+	modal.BackgroundColor3 = C_Background
+	modal.BorderSizePixel = 0
+	modal.Parent = overlay
+	
+	local modalCorner = Instance.new("UICorner")
+	modalCorner.CornerRadius = UDim.new(0, 8)
+	modalCorner.Parent = modal
+	
+	local modalPadding = Instance.new("UIPadding")
+	modalPadding.PaddingLeft = UDim.new(0, 16)
+	modalPadding.PaddingRight = UDim.new(0, 16)
+	modalPadding.PaddingTop = UDim.new(0, 16)
+	modalPadding.PaddingBottom = UDim.new(0, 16)
+	modalPadding.Parent = modal
+
+	local modalTitle = Instance.new("TextLabel")
+	modalTitle.Name = "Title"
+	modalTitle.Size = UDim2.new(1, 0, 0, 30)
+	modalTitle.BackgroundTransparency = 1
+	modalTitle.Text = "Panel Authentication"
+	modalTitle.Font = Enum.Font.SourceSansBold
+	modalTitle.TextSize = 20
+	modalTitle.TextColor3 = C_Text
+	modalTitle.TextXAlignment = Enum.TextXAlignment.Left
+	modalTitle.Parent = modal
+
+	local passBox = Instance.new("TextBox")
+	passBox.Name = "PassBox"
+	passBox.Size = UDim2.new(1, 0, 0, 36)
+	passBox.Position = UDim2.new(0, 0, 0, 50)
+	passBox.PlaceholderText = "Password"
+	passBox.PlaceholderColor3 = C_Text_Dim
+	passBox.BackgroundColor3 = C_Background_Lighter
+	passBox.TextColor3 = C_Text
+	passBox.ClearTextOnFocus = false
+	passBox.Font = Enum.Font.SourceSans
+	passBox.TextSize = 16
+	passBox.Text = ""
+	passBox.Parent = modal
+	UI.PassBox = passBox
+	
+	local passCorner = Instance.new("UICorner")
+	passCorner.CornerRadius = UDim.new(0, 6)
+	passCorner.Parent = passBox
+	
+	local passStroke = Instance.new("UIStroke")
+	passStroke.Color = C_Background_Lightest
+	passStroke.Thickness = 1
+	passStroke.Parent = passBox
+
+	local getKeyButton = createButton("GetKey", "GET KEY", modal)
+	getKeyButton.Size = UDim2.new(1, 0, 0, 30)
+	getKeyButton.Position = UDim2.new(0, 0, 0, 96)
+	getKeyButton.BackgroundColor3 = C_Background_Lighter
+	getKeyButton.TextColor3 = C_Text_Dim
+	UI.GetKeyButton = getKeyButton
+	
+	local modalStatus = Instance.new("TextLabel")
+	modalStatus.Name = "Status"
+	modalStatus.Size = UDim2.new(1, 0, 0, 18)
+	modalStatus.Position = UDim2.new(0, 0, 0, 132)
+	modalStatus.BackgroundTransparency = 1
+	modalStatus.Text = ""
+	modalStatus.Font = Enum.Font.SourceSans
+	modalStatus.TextSize = 14
+	modalStatus.TextColor3 = C_Text_Dim
+	modalStatus.Parent = modal
+	UI.ModalStatus = modalStatus
+
+	local passButton = createButton("Unlock", "Unlock", modal)
+	passButton.Size = UDim2.new(0.5, -4, 0, 36)
+	passButton.Position = UDim2.new(0, 0, 1, -36)
+	UI.PassButton = passButton
+
+	local cancelButton = createButton("Close", "Close UI", modal)
+	cancelButton.Name = "Close"
+	cancelButton.Size = UDim2.new(0.5, -4, 0, 36)
+	cancelButton.Position = UDim2.new(0.5, 4, 1, -36)
+	cancelButton.BackgroundColor3 = C_Error
+	UI.PassCancelButton = cancelButton
+	
+	cancelButton.MouseEnter:Connect(function() TweenService:Create(cancelButton, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(200, 70, 70)}):Play() end)
+	cancelButton.MouseLeave:Connect(function() TweenService:Create(cancelButton, TweenInfo.new(0.15), {BackgroundColor3 = C_Error}):Play() end)
+	
+	
+	local mainFrame = Instance.new("Frame")
+	mainFrame.Name = "MainFrame"
+	mainFrame.Size = PANEL_SIZE
+	mainFrame.Position = UDim2.new(0, 60, 0, 60)
+	mainFrame.BackgroundColor3 = C_Background
+	mainFrame.BorderSizePixel = 0
+	mainFrame.AnchorPoint = Vector2.new(0,0)
+	mainFrame.Active = true
+	mainFrame.ClipsDescendants = true
+	mainFrame.Visible = false 
+	mainFrame.ZIndex = 5
+	mainFrame.Parent = screenGui
+	UI.MainFrame = mainFrame
+
+	local mainCorner = Instance.new("UICorner")
+	mainCorner.CornerRadius = UDim.new(0, 8)
+	mainCorner.Parent = mainFrame
+	
+	local mainContent = Instance.new("Frame") 
+	mainContent.Name = "MainContent"
+	mainContent.Size = UDim2.new(1, 0, 1, -HEADER_HEIGHT)
+	mainContent.Position = UDim2.new(0, 0, 0, HEADER_HEIGHT)
+	mainContent.BackgroundTransparency = 1
+	mainContent.Parent = mainFrame
+	UI.MainContent = mainContent
+	
+	local mainPadding = Instance.new("UIPadding")
+	mainPadding.PaddingLeft = UDim.new(0, 12)
+	mainPadding.PaddingRight = UDim.new(0, 12)
+	mainPadding.PaddingTop = UDim.new(0, 12)
+	mainPadding.PaddingBottom = UDim.new(0, 12)
+	mainPadding.Parent = mainContent
+	
+	local header = Instance.new("Frame")
+	header.Name = "Header"
+	header.Size = UDim2.new(1, 0, 0, HEADER_HEIGHT)
+	header.BackgroundColor3 = C_Background_Lighter
+	header.BorderSizePixel = 0
+	header.Parent = mainFrame
+	UI.Header = header
+
+	local title = Instance.new("TextLabel")
+	title.Name = "Title"
+	title.Size = UDim2.new(1, -100, 1, 0)
+	title.Position = UDim2.new(0, 12, 0, 0)
+	title.BackgroundTransparency = 1
+	title.Text = "ESP Panel"
+	title.TextColor3 = C_Text
+	title.Font = Enum.Font.SourceSansBold
+	title.TextSize = 18
+	title.TextXAlignment = Enum.TextXAlignment.Left
+	title.Parent = header
+	
+	local minimizeButton = Instance.new("TextButton")
+	minimizeButton.Name = "Minimize"
+	minimizeButton.Size = UDim2.new(0, 36, 1, 0)
+	minimizeButton.Position = UDim2.new(1, -72, 0, 0)
+	minimizeButton.BackgroundTransparency = 1
+	minimizeButton.Text = "—"
+	minimizeButton.Font = Enum.Font.SourceSansBold
+	minimizeButton.TextSize = 20
+	minimizeButton.TextColor3 = C_Text_Dim
+	minimizeButton.Parent = header
+	UI.MinimizeButton = minimizeButton
+	
+	local closeButton = Instance.new("TextButton")
+	closeButton.Name = "Close"
+	closeButton.Size = UDim2.new(0, 36, 1, 0)
+	closeButton.Position = UDim2.new(1, -36, 0, 0)
+	closeButton.BackgroundTransparency = 1
+	closeButton.Text = "✕"
+	closeButton.Font = Enum.Font.SourceSansBold
+	closeButton.TextSize = 18
+	closeButton.TextColor3 = C_Text_Dim
+	closeButton.Parent = header
+	UI.CloseButton = closeButton
+	
+	minimizeButton.MouseEnter:Connect(function() minimizeButton.TextColor3 = C_Text end)
+	minimizeButton.MouseLeave:Connect(function() minimizeButton.TextColor3 = C_Text_Dim end)
+	closeButton.MouseEnter:Connect(function() closeButton.TextColor3 = C_Error end)
+	closeButton.MouseLeave:Connect(function() closeButton.TextColor3 = C_Text_Dim end)
+	
+	
+	
+	local inputLabel = Instance.new("TextLabel")
+	inputLabel.Name = "InputLabel"
+	inputLabel.Size = UDim2.new(1, 0, 0, 18)
+	inputLabel.BackgroundTransparency = 1
+	inputLabel.Text = "Toggle Player"
+	inputLabel.Font = Enum.Font.SourceSans
+	inputLabel.TextSize = 16
+	inputLabel.TextColor3 = C_Text_Dim
+	inputLabel.TextXAlignment = Enum.TextXAlignment.Left
+	inputLabel.Parent = mainContent
+	
+	local inputBox = Instance.new("TextBox")
+	inputBox.Name = "InputBox"
+	inputBox.Size = UDim2.new(1, -82, 0, 36)
+	inputBox.Position = UDim2.new(0, 0, 0, 22)
+	inputBox.PlaceholderText = "Username or Display"
+	inputBox.PlaceholderColor3 = C_Text_Dim
+	inputBox.ClearTextOnFocus = false
+	inputBox.BackgroundColor3 = C_Background_Lighter
+	inputBox.TextColor3 = C_Text
+	inputBox.Font = Enum.Font.SourceSans
+	inputBox.TextSize = 16
+	inputBox.Parent = mainContent
+	UI.InputBox = inputBox
+	
+	local inputCorner = Instance.new("UICorner")
+	inputCorner.CornerRadius = UDim.new(0, 6)
+	inputCorner.Parent = inputBox
+	
+	local inputStroke = Instance.new("UIStroke")
+	inputStroke.Color = C_Background_Lightest
+	inputStroke.Thickness = 1
+	inputStroke.Parent = inputBox
+	
+	local toggleButton = createButton("ToggleButton", "Toggle", mainContent)
+	toggleButton.Size = UDim2.new(0, 70, 0, 36)
+	toggleButton.Position = UDim2.new(1, -70, 0, 22)
+	toggleButton.TextSize = 15
+	UI.ToggleButton = toggleButton
+	
+	
+	local viewAllLabel = Instance.new("TextLabel")
+	viewAllLabel.Name = "ViewAllLabel"
+	viewAllLabel.Size = UDim2.new(0.5, 0, 0, 36)
+	viewAllLabel.Position = UDim2.new(0, 0, 0, 70)
+	viewAllLabel.BackgroundTransparency = 1
+	viewAllLabel.Text = "View Everyone"
+	viewAllLabel.Font = Enum.Font.SourceSans
+	viewAllLabel.TextSize = 16
+	viewAllLabel.TextColor3 = C_Text_Dim
+	viewAllLabel.TextXAlignment = Enum.TextXAlignment.Left
+	viewAllLabel.Parent = mainContent
+
+	local viewAllSwitch = Instance.new("TextButton")
+	viewAllSwitch.Name = "ViewAllSwitch"
+	viewAllSwitch.Size = UDim2.new(0, 50, 0, 26)
+	viewAllSwitch.Position = UDim2.new(1, -50, 0, 75)
+	viewAllSwitch.BackgroundColor3 = C_Error
+	viewAllSwitch.Text = ""
+	viewAllSwitch.Parent = mainContent
+	UI.ViewAllSwitch = viewAllSwitch
+	
+	local switchCorner = Instance.new("UICorner")
+	switchCorner.CornerRadius = UDim.new(0.5, 0)
+	switchCorner.Parent = viewAllSwitch
+	
+	local switchKnob = Instance.new("Frame")
+	switchKnob.Name = "Knob"
+	switchKnob.Size = UDim2.new(0, 20, 0, 20)
+	switchKnob.Position = UDim2.new(0, 3, 0.5, -10)
+	switchKnob.BackgroundColor3 = C_Text
+	switchKnob.BorderSizePixel = 0
+	switchKnob.Parent = viewAllSwitch
+	UI.ViewAllSwitchKnob = switchKnob
+	
+	local knobCorner = Instance.new("UICorner")
+	knobCorner.CornerRadius = UDim.new(0.5, 0)
+	knobCorner.Parent = switchKnob
+	
+	
+	local activeLabel = Instance.new("TextLabel")
+	activeLabel.Name = "ActiveLabel"
+	activeLabel.Size = UDim2.new(1, 0, 0, 18)
+	activeLabel.Position = UDim2.new(0, 0, 0, 120)
+	activeLabel.BackgroundTransparency = 1
+	activeLabel.Text = "Active Players (0)"
+	activeLabel.Font = Enum.Font.SourceSans
+	activeLabel.TextSize = 16
+	activeLabel.TextColor3 = C_Text_Dim
+	activeLabel.TextXAlignment = Enum.TextXAlignment.Left
+	activeLabel.Parent = mainContent
+	UI.ActiveLabel = activeLabel
+	
+	local activeListFrame = Instance.new("ScrollingFrame")
+	activeListFrame.Name = "ActiveListFrame"
+	activeListFrame.Size = UDim2.new(1, 0, 1, -142)
+	activeListFrame.Position = UDim2.new(0, 0, 0, 142)
+	activeListFrame.BackgroundColor3 = C_Background_Lighter
+	activeListFrame.BorderSizePixel = 0
+	activeListFrame.ScrollBarThickness = 6
+	activeListFrame.ScrollBarImageColor3 = C_Primary
+	activeListFrame.Parent = mainContent
+	UI.ActiveListFrame = activeListFrame
+	
+	local listCorner = Instance.new("UICorner")
+	listCorner.CornerRadius = UDim.new(0, 6)
+	listCorner.Parent = activeListFrame
+	
+	local listLayout = Instance.new("UIListLayout")
+	listLayout.Padding = UDim.new(0, 4)
+	listLayout.SortOrder = Enum.SortOrder.Name
+	listLayout.Parent = activeListFrame
+	
+	local listPadding = Instance.new("UIPadding")
+	listPadding.PaddingLeft = UDim.new(0, 4)
+	listPadding.PaddingRight = UDim.new(0, 4)
+	listPadding.PaddingTop = UDim.new(0, 4)
+	listPadding.PaddingBottom = UDim.new(0, 4)
+	listPadding.Parent = activeListFrame
+	
+	
+	screenGui.Parent = PlayerGui
+	return screenGui
+end
+
+
+local function createESP(player)
+	if not player or player == LocalPlayer and EXCLUDE_LOCALPLAYER or ESPs[player] then return end
+	local char = player.Character
+	if not char then return end
+	local root = char:FindFirstChild("HumanoidRootPart")
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if not root or not hum then return end
+	
+	
+	if ESPs[player] then return end
+
+	local billboard = Instance.new("BillboardGui")
+	billboard.Name = "ESP_Billboard"
+	billboard.Adornee = root
+	billboard.Size = UDim2.new(0, 150, 0, 50)
+	billboard.StudsOffset = Vector3.new(0, 3, 0)
+	billboard.AlwaysOnTop = true
+	billboard.Parent = root
+	
+	
+	local espFrame = Instance.new("Frame")
+	espFrame.Name = "ESPFrame"
+	espFrame.Size = UDim2.new(1, 0, 1, 0)
+	espFrame.BackgroundTransparency = 1
+	espFrame.Parent = billboard
+
+	
+	local nameLabel = Instance.new("TextLabel")
+	nameLabel.Name = "Name"
+	nameLabel.Size = UDim2.new(1, 0, 0, 20)
+	nameLabel.Position = UDim2.new(0, 0, 0, 0)
+	nameLabel.BackgroundTransparency = 1
+	nameLabel.Font = Enum.Font.SourceSansBold
+	nameLabel.TextScaled = false
+	nameLabel.TextSize = 18
+	nameLabel.TextColor3 = C_Error
+	nameLabel.TextStrokeTransparency = 0.5
+	nameLabel.Text = player.DisplayName
+	nameLabel.Parent = espFrame
+	
+	
+	local distLabel = Instance.new("TextLabel")
+	distLabel.Name = "Dist"
+	distLabel.Size = UDim2.new(1, 0, 0, 16)
+	distLabel.Position = UDim2.new(0, 0, 0, 18)
+	distLabel.BackgroundTransparency = 1
+	distLabel.Font = Enum.Font.SourceSans
+	distLabel.TextScaled = false
+	distLabel.TextSize = 14
+	distLabel.TextColor3 = C_Text
+	distLabel.TextStrokeTransparency = 0.6
+	distLabel.Text = ""
+	distLabel.Parent = espFrame
+	
+	
+	local healthBar = Instance.new("Frame")
+	healthBar.Name = "HealthBar"
+	healthBar.Size = UDim2.new(1, 0, 0, 8)
+	healthBar.Position = UDim2.new(0, 0, 1, -8)
+	healthBar.BackgroundColor3 = C_Text_Dark
+	healthBar.BorderSizePixel = 0
+	healthBar.Parent = espFrame
+	
+	local healthCorner = Instance.new("UICorner")
+	healthCorner.CornerRadius = UDim.new(0, 3)
+	healthCorner.Parent = healthBar
+	
+	local healthFill = Instance.new("Frame")
+	healthFill.Name = "Fill"
+	healthFill.Size = UDim2.new(hum.Health / hum.MaxHealth, 0, 1, 0)
+	healthFill.BackgroundColor3 = C_Success
+	healthFill.BorderSizePixel = 0
+	healthFill.Parent = healthBar
+	
+	local healthFillCorner = Instance.new("UICorner")
+	healthFillCorner.CornerRadius = UDim.new(0, 3)
+	healthFillCorner.Parent = healthFill
+	
+	
+	local box = Instance.new("Frame")
+	box.Name = "Box"
+	box.Size = UDim2.new(1, 0, 1, -12) 
+	box.Position = UDim2.new(0, 0, 0, 0)
+	box.BackgroundTransparency = 1
+	box.ZIndex = -1
+	box.Parent = espFrame
+	
+	local boxStroke = Instance.new("UIStroke")
+	boxStroke.Color = C_Error
+	boxStroke.Thickness = 2
+	boxStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	boxStroke.Parent = box
+
+	
+	local connections = {}
+	
+	
+	table.insert(connections, hum.HealthChanged:Connect(function(health)
+		local perc = math.clamp(health / hum.MaxHealth, 0, 1)
+		TweenService:Create(healthFill, TweenInfo.new(0.2), {Size = UDim2.new(perc, 0, 1, 0)}):Play()
+		if perc < 0.3 then
+			healthFill.BackgroundColor3 = C_Error
+		elseif perc < 0.6 then
+			healthFill.BackgroundColor3 = Color3.fromRGB(255, 165, 0) 
+		else
+			healthFill.BackgroundColor3 = C_Success
+		end
+	end))
+
+	ESPs[player] = {
+		billboard = billboard,
+		nameLabel = nameLabel,
+		distLabel = distLabel,
+		healthFill = healthFill,
+		boxStroke = boxStroke,
+		connections = connections
+	}
+end
+
+local function removeESP(player)
+	local data = ESPs[player]
+	if data then
+		
+		for _, conn in ipairs(data.connections) do
+			conn:Disconnect()
+		end
+		if data.billboard then
+			data.billboard:Destroy()
+		end
+	end
+	ESPs[player] = nil
+end
+
+
+local function updateESP(player, data, myRootPos)
+	if not player or not player.Character then
+		removeESP(player)
+		return
+	end
+	local root = player.Character:FindFirstChild("HumanoidRootPart")
+	if not root then
+		removeESP(player)
+		return
+	end
+	
+	
+	local dist = (myRootPos - root.Position).Magnitude
+	if ShowDistance and data.distLabel then
+		data.distLabel.Text = string.format("%.0f studs", dist)
+	end
+	
+	
+	local color = (player.Team == LocalPlayer.Team) and C_Success or C_Error
+	if data.nameLabel.TextColor3 ~= color then
+		data.nameLabel.TextColor3 = color
+	end
+	if data.boxStroke.Color ~= color then
+		data.boxStroke.Color = color
+	end
+end
+
+
+local function updateActiveList()
+	UI.ActiveListFrame:ClearAllChildren()
+	local count = 0
+	
+	
+	local listLayout = Instance.new("UIListLayout")
+	listLayout.Padding = UDim.new(0, 4)
+	listLayout.SortOrder = Enum.SortOrder.Name
+	listLayout.Parent = UI.ActiveListFrame
+	
+	for p, enabled in pairs(ESPEnabled) do
+		if enabled and p then
+			count = count + 1
+			local playerTag = Instance.new("Frame")
+			playerTag.Name = p.Name
+			playerTag.Size = UDim2.new(1, 0, 0, 28)
+			playerTag.BackgroundColor3 = C_Background
+			playerTag.Parent = UI.ActiveListFrame
+			
+			local tagCorner = Instance.new("UICorner")
+			tagCorner.CornerRadius = UDim.new(0, 4)
+			tagCorner.Parent = playerTag
+			
+			local tagName = Instance.new("TextLabel")
+			tagName.Size = UDim2.new(1, -30, 1, 0)
+			tagName.Position = UDim2.new(0, 8, 0, 0)
+			tagName.BackgroundTransparency = 1
+			tagName.Text = p.DisplayName .. " (@" .. p.Name .. ")"
+			tagName.Font = Enum.Font.SourceSans
+			tagName.TextSize = 15
+			tagName.TextColor3 = (p.Team == LocalPlayer.Team) and C_Success or C_Error
+			tagName.TextXAlignment = Enum.TextXAlignment.Left
+			tagName.Parent = playerTag
+			
+			
+			local tagRemove = Instance.new("TextButton")
+			tagRemove.Size = UDim2.new(0, 28, 1, 0)
+			tagRemove.Position = UDim2.new(1, -28, 0, 0)
+			tagRemove.BackgroundTransparency = 1
+			tagRemove.Text = "✕"
+			tagRemove.Font = Enum.Font.SourceSansBold
+			tagRemove.TextSize = 16
+			tagRemove.TextColor3 = C_Text_Dim
+			tagRemove.Parent = playerTag
+			
+			tagRemove.MouseEnter:Connect(function() tagRemove.TextColor3 = C_Error end)
+			tagRemove.MouseLeave:Connect(function() tagRemove.TextColor3 = C_Text_Dim end)
+			
+			tagRemove.MouseButton1Click:Connect(function()
+				ESPEnabled[p] = false
+				removeESP(p)
+				updateActiveList()
+			end)
+		end
+	end
+	
+	UI.ActiveLabel.Text = string.format("Active Players (%d)", count)
+end
+
+local function findPlayerByNameOrDisplay(text)
+	local t = norm(text)
+	if t == "" then return nil end
+	for _, p in pairs(Players:GetPlayers()) do
+		if norm(p.Name) == t or norm(p.DisplayName) == t then
+			return p
+		end
+	end
+	return nil
+end
+
+
+local function onTogglePlayer()
+	local txt = UI.InputBox.Text
+	local target = findPlayerByNameOrDisplay(txt)
+	
+	if not target then
+		warn("Player not found: "..tostring(txt))
+		
+		local oldColor = UI.InputBox.BackgroundColor3
+		UI.InputBox.BackgroundColor3 = C_Error
+		task.wait(0.3)
+		UI.InputBox.BackgroundColor3 = oldColor
+		return
+	end
+	
+	if ESPEnabled[target] then
+		ESPEnabled[target] = false
+		removeESP(target)
+	else
+		ESPEnabled[target] = true
+		if target.Character then createESP(target) end
+	end
+	
+	UI.InputBox.Text = ""
+	updateActiveList()
+end
+
+
+local function setViewAll(on)
+	viewAllEnabled = on
+	
+	
+	local targetColor = on and C_Success or C_Error
+	local targetPos = on and UDim2.new(1, -23, 0.5, -10) or UDim2.new(0, 3, 0.5, -10)
+	
+	TweenService:Create(UI.ViewAllSwitch, TweenInfo.new(0.2), {BackgroundColor3 = targetColor}):Play()
+	TweenService:Create(UI.ViewAllSwitchKnob, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = targetPos}):Play()
+	
+	
+	if on then
+		for _, p in pairs(Players:GetPlayers()) do
+			if not (p == LocalPlayer and EXCLUDE_LOCALPLAYER) then
+				ESPEnabled[p] = true
+				if p.Character then createESP(p) end
+			end
+		end
+	else
+		
+		
+		for p, _ in pairs(ESPEnabled) do
+			ESPEnabled[p] = false
+			removeESP(p)
+		end
+	end
+	
+	updateActiveList()
+end
+
+
+local function unlockUI()
+	TweenService:Create(UI.PasswordOverlay, TweenInfo.new(0.3), {BackgroundTransparency = 1}):Play()
+	UI.PasswordOverlay:Destroy() 
+	UI.MainFrame.Visible = true
+end
+
+
+local function initPasswordModal()
+	UI.PassButton.MouseButton1Click:Connect(function()
+		if UI.PassBox.Text == PASSWORD then
+			unlockUI()
+		else
+			UI.PassBox.Text = ""
+			
+			local startPos = UI.PasswordOverlay.Modal.Position
+			local tweenInfo = TweenInfo.new(0.06, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 3, true)
+			local tween = TweenService:Create(UI.PasswordOverlay.Modal, tweenInfo, {Position = startPos + UDim2.new(0,6,0,0)})
+			tween:Play()
+		end
+	end)
+
+	UI.PassCancelButton.MouseButton1Click:Connect(function()
+		UI.PasswordOverlay.Parent:Destroy() 
+	end)
+
+	UI.PassBox.FocusLost:Connect(function(enterPressed)
+		if enterPressed then
+			UI.PassButton.MouseButton1Click:Invoke()
+		end
+	end)
+	
+	UI.GetKeyButton.MouseButton1Click:Connect(function()
+		local success = tryCopyToClipboard("https://raw.githubusercontent.com/MegeTech/megeHub-ESP/refs/heads/main/--%20LocalScript%20(1).txt")
+		local oldText = UI.GetKeyButton.Text
+		if success then
+			UI.ModalStatus.Text = "Copied link to clipboard!"
+			UI.GetKeyButton.Text = "Copied!"
+		else
+			UI.ModalStatus.Text = "Failed to copy. Please copy manually: https://raw.githubusercontent.com/MegeTech/megeHub-ESP/refs/heads/main/--%20LocalScript%20(1).txt"
+			UI.GetKeyButton.Text = "Failed!"
+		end
+		
+		task.delay(2, function()
+			if UI.ModalStatus and UI.ModalStatus.Parent then UI.ModalStatus.Text = "" end
+			if UI.GetKeyButton and UI.GetKeyButton.Parent then UI.GetKeyButton.Text = oldText end
+		end)
+	end)
+end
+
+
+local function initMainPanel()
+	
+	local dragging, dragStart
+	UI.Header.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			local startPos = UI.MainFrame.Position
+			
+			local moveConn
+			moveConn = UserInputService.InputChanged:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+					if dragging then
+						local delta = input.Position - dragStart
+						UI.MainFrame.Position = UDim2.new(0, startPos.X.Offset + delta.X, 0, startPos.Y.Offset + delta.Y)
+					end
+				end
+			end)
+			
+			local endConn
+			endConn = UserInputService.InputEnded:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+					dragging = false
+					if moveConn then moveConn:Disconnect() end
+					if endConn then endConn:Disconnect() end
+				end
+			end)
+		end
+	end)
+
+	
+	local minimized = false
+	UI.MinimizeButton.MouseButton1Click:Connect(function()
+		minimized = not minimized
+		UI.MainContent.Visible = not minimized
+		local targetSize = minimized and UDim2.new(PANEL_SIZE.X.Scale, PANEL_SIZE.X.Offset, 0, HEADER_HEIGHT) or PANEL_SIZE
+		TweenService:Create(UI.MainFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Size = targetSize}):Play()
+	end)
+
+	
+	UI.CloseButton.MouseButton1Click:Connect(function()
+		UI.MainFrame.Parent:Destroy()
+	end)
+	
+	
+	UI.ToggleButton.MouseButton1Click:Connect(onTogglePlayer)
+	UI.InputBox.FocusLost:Connect(function(enterPressed)
+		if enterPressed then
+			onTogglePlayer()
+		end
+	end)
+	
+	UI.ViewAllSwitch.MouseButton1Click:Connect(function()
+		setViewAll(not viewAllEnabled)
+	end)
+end
+
+
+createGUI()
+
+initPasswordModal()
+initMainPanel()
+
+
+Players.PlayerAdded:Connect(function(p)
+	if viewAllEnabled then
+		ESPEnabled[p] = true
+		
+		p.CharacterAdded:Connect(function(char)
+			task.wait(0.1) 
+			if ESPEnabled[p] then createESP(p) end
+		end)
+		updateActiveList()
+	end
+	
+	
+	p.CharacterAdded:Connect(function(char)
+		task.wait(0.1)
+		if ESPEnabled[p] then
+			removeESP(p) 
+			createESP(p)
+		end
+	end)
+end)
+
+Players.PlayerRemoving:Connect(function(p)
+	ESPEnabled[p] = nil
+	removeESP(p)
+	updateActiveList()
+end)
+
+
+for _, p in pairs(Players:GetPlayers()) do
+	p.CharacterAdded:Connect(function(char)
+		task.wait(0.1)
+		if ESPEnabled[p] then
+			removeESP(p) 
+			createESP(p)
+		end
+	end)
+end
+
+
+RunService.RenderStepped:Connect(function()
+	if not LocalPlayer.Character or not LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+		
+		for p, _ in pairs(ESPs) do removeESP(p) end
+		return
+	end
+	
+	local myRoot = LocalPlayer.Character.HumanoidRootPart
+	
+	for player, data in pairs(ESPs) do
+		updateESP(player, data, myRoot.Position)
+	end
+end)
