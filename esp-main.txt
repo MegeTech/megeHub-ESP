@@ -7,7 +7,7 @@ local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
 
-local FUNCTION = "EXECUTE_ESP_HACKS" 
+local FUNCTION = "EXECUTE_ESP_HACK" 
 local EXCLUDE_LOCALPLAYER = true 
 local ShowDistance = true
 local PANEL_SIZE = UDim2.new(0, 320, 0, 400)
